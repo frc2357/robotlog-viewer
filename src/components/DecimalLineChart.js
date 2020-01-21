@@ -20,9 +20,15 @@ function DecimalLineChart({ topicName, entries }) {
     []
   );
 
+  const timeFormat = (tick, i) => {
+    const minutes = Math.floor(tick / 60);
+    const seconds = (tick % 60).toString().padStart(2, '0');
+    return minutes + ':' + seconds;
+  };
+
   const axes = React.useMemo(
     () => [
-      { primary: true, type: 'linear', position: 'bottom', show: true },
+      { primary: true, type: 'linear', position: 'bottom', show: true, format: timeFormat },
       { type: 'linear', position: 'left', show: true }
     ],
     []
